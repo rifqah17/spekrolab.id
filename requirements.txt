@@ -1,4 +1,5 @@
 streamlit
-pillow
 pytesseract
-pandass
+pillow
+pandassopencv-python
+numpy
