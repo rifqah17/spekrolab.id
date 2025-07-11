@@ -1,19 +1,13 @@
-# 🎈 Blank app template
+# SPECTRO+
 
-A simple Streamlit app template for you to modify!
+Aplikasi edukasi spektroskopi berbasis Streamlit.  
+Fitur:
+- Prediksi gugus fungsi dari spektrum IR
+- Upload gambar spektrum (fitur OCR)
+- Input manual bilangan gelombang
+- Edukasi dan kuis dasar spektroskopi
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+---
 
-### How to run it on your own machine
-
-1. Install the requirements
-
-   ```
-   $ pip install -r requirements.txt
-   ```
-
-2. Run the app
-
-   ```
-   $ streamlit run streamlit_app.py
-   ```
+🚀 Dibuat oleh: kelompok 1 
+🌐 Live app: [Klik untuk buka](https://spektrolabid-38xxhalcqb6cjb...streamlit.app)
