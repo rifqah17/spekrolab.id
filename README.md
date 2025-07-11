@@ -10,4 +10,4 @@ Fitur:
 ---
 
 🚀 Dibuat oleh: kelompok 1 
-🌐 Live app: [Klik untuk buka](spekrolabid-94rksgc63jmw3pnpppau8o.streamlit.app)
+🌐 Live app: [Klik untuk buka](https://spekrolabid-4vpmvvqvwchabfzx8bhxib.streamlit.app)
