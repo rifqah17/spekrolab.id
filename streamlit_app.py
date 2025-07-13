@@ -25,23 +25,23 @@ halaman = st.sidebar.selectbox(
     ]
 )
 
-# -------------------- Data Spektrum IR --------------------
+# -------------------- Data Spektrum IR Akurat --------------------
 ir_data = [
-    ("O–H (alkohol/fenol)", 3200, 3600, "Lebar, intens"),
-    ("O–H (asam karboksilat)", 2500, 3300, "Sangat lebar, overlap"),
-    ("N–H", 3300, 3500, "Tajam, 1–2 puncak"),
-    ("C–H (alkana)", 2850, 2960, "Tajam, medium"),
-    ("C–H (alkena)", 3020, 3100, "Tajam, lemah"),
-    ("C–H (aromatik)", 3000, 3100, "Medium"),
+    ("O–H (alkohol)", 3200, 3550, "Lebar, intens"),
+    ("O–H (asam karboksilat)", 2500, 3300, "Sangat lebar dan tumpang tindih"),
+    ("N–H (amina)", 3300, 3500, "Tajam, 1 atau 2 puncak"),
+    ("C–H (alkana)", 2850, 2960, "Tajam, kuat"),
+    ("C–H (alkena)", 3020, 3100, "Tajam, sedang"),
+    ("C–H (aromatik)", 3000, 3100, "Lemah–sedang"),
     ("≡C–H (alkuna terminal)", 3300, 3300, "Tajam"),
     ("C≡C", 2100, 2260, "Tajam, lemah"),
     ("C≡N", 2210, 2260, "Tajam, kuat"),
-    ("C=C (alkena)", 1620, 1680, "Tajam, medium"),
-    ("C=C (aromatik)", 1450, 1600, "2 pita, medium"),
-    ("C=O (karbonil)", 1650, 1750, "Tajam, sangat kuat"),
+    ("C=C (alkena)", 1620, 1680, "Tajam, sedang"),
+    ("C=C (aromatik)", 1450, 1600, "2–3 pita lemah"),
+    ("C=O (karbonil)", 1680, 1750, "Tajam, sangat kuat"),
     ("C–O", 1000, 1300, "Tajam, 1–2 pita"),
     ("C–N", 1180, 1360, "Medium"),
-    ("NO₂", 1345, 1560, "2 pita kuat")
+    ("Zona fingerprint", 400, 1400, "Sangat kompleks dan khas")
 ]
 
 # -------------------- Isi Tiap Halaman --------------------
@@ -63,13 +63,13 @@ elif halaman == "📷 Upload Gambar Spektrum":
         st.image(image, caption="Gambar Spektrum Terupload", use_column_width=True)
 
         with st.spinner("🔍 Mendeteksi angka bilangan gelombang..."):
-            # Preprocessing gambar
+            # Preprocessing
             image = ImageOps.grayscale(image)
             image = image.filter(ImageFilter.SHARPEN)
             image = image.point(lambda x: 0 if x < 160 else 255, '1')
 
             text = pytesseract.image_to_string(image, config='--psm 6')
-            angka = re.findall(r'\b[1-4]\d{2,3}\b', text)  # cari 3-4 digit angka antara 500–4000
+            angka = re.findall(r'\b[1-4]\d{2,3}\b', text)
             angka_valid = [int(a) for a in angka if 500 <= int(a) <= 4000]
             angka_unik = sorted(set(angka_valid))
 
@@ -114,7 +114,7 @@ elif halaman == "📊 Input Data Panjang Gelombang":
 
 elif halaman == "📚 Teori & Tabel Spektrum":
     st.markdown("## 📚 Teori & Tabel Spektrum IR")
-    st.markdown("Berikut adalah rentang serapan IR untuk berbagai gugus fungsi:")
+    st.markdown("Berikut adalah rentang serapan IR yang terverifikasi:")
 
     df = pd.DataFrame(ir_data, columns=["Gugus Fungsi", "Dari (cm⁻¹)", "Sampai (cm⁻¹)", "Karakteristik"])
     st.table(df)
@@ -125,29 +125,29 @@ elif halaman == "🧪 Kuis Interaktif":
 
     kuis_list = [
         {
-            "soal": "Pita IR di sekitar 3300 cm⁻¹ yang tajam biasanya menandakan adanya?",
-            "opsi": ["C=O", "O–H (lebar)", "≡C–H atau N–H", "C–O"],
-            "jawaban": "≡C–H atau N–H"
-        },
-        {
-            "soal": "Pita sangat lebar dari 2500–3300 cm⁻¹ adalah ciri khas dari?",
-            "opsi": ["Alkohol", "Amina", "Asam karboksilat", "Ester"],
-            "jawaban": "Asam karboksilat"
-        },
-        {
-            "soal": "Pita serapan kuat dan tajam di 1700 cm⁻¹ biasanya merupakan?",
-            "opsi": ["C=C", "C=O", "C–O", "C≡N"],
+            "soal": "Rentang 1680–1750 cm⁻¹ merupakan ciri khas gugus?",
+            "opsi": ["C=C", "C≡N", "C=O", "O–H"],
             "jawaban": "C=O"
         },
         {
-            "soal": "Serapan 2210–2260 cm⁻¹ dapat menunjukkan adanya gugus?",
-            "opsi": ["C–N", "C≡C", "C≡N", "C=C"],
+            "soal": "Spektrum IR di 3200–3550 cm⁻¹ yang lebar dan intens biasanya menunjukkan?",
+            "opsi": ["C–H", "N–H", "O–H (alkohol)", "C≡C"],
+            "jawaban": "O–H (alkohol)"
+        },
+        {
+            "soal": "Bilangan 2210–2260 cm⁻¹ dengan intensitas kuat kemungkinan besar adalah?",
+            "opsi": ["C≡C", "C=O", "C≡N", "C=C"],
             "jawaban": "C≡N"
         },
         {
-            "soal": "Pita 2850–2960 cm⁻¹ umumnya berasal dari?",
-            "opsi": ["O–H", "C–H (alkana)", "N–H", "C=C"],
-            "jawaban": "C–H (alkana)"
+            "soal": "Gugus fungsi aromatik biasa menunjukkan serapan pada rentang?",
+            "opsi": ["1450–1600 cm⁻¹", "1000–1300 cm⁻¹", "2850–2960 cm⁻¹", "3300–3500 cm⁻¹"],
+            "jawaban": "1450–1600 cm⁻¹"
+        },
+        {
+            "soal": "Zona fingerprint biasanya berada di rentang?",
+            "opsi": ["2500–3300 cm⁻¹", "1450–1750 cm⁻¹", "400–1400 cm⁻¹", "3500–4000 cm⁻¹"],
+            "jawaban": "400–1400 cm⁻¹"
         }
     ]
 
