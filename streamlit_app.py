@@ -178,7 +178,6 @@ elif halaman == "🧪 Kuis Interaktif":
             st.balloons()
             st.success("Selamat! Kamu menjawab semua dengan benar.")
             "jawaban": "1450–1600 cm⁻¹"
-        },
         {
             "soal": "Zona fingerprint biasanya berada di rentang?",
             "opsi": ["2500–3300 cm⁻¹", "1450–1750 cm⁻¹", "400–1400 cm⁻¹", "3500–4000 cm⁻¹"],
