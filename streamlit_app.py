@@ -123,34 +123,98 @@ elif halaman == "🧪 Kuis Interaktif":
     st.markdown("## 🧪 Kuis Spektroskopi IR")
     st.markdown("Jawab pertanyaan berikut untuk menguji pemahaman kamu:")
 
-    kuis_list = [
-        {
-            "soal": "Rentang 1680–1750 cm⁻¹ merupakan ciri khas gugus?",
-            "opsi": ["C=C", "C≡N", "C=O", "O–H"],
-            "jawaban": "C=O"
-        },
-        {
-            "soal": "Spektrum IR di 3200–3550 cm⁻¹ yang lebar dan intens biasanya menunjukkan?",
-            "opsi": ["C–H", "N–H", "O–H (alkohol)", "C≡C"],
-            "jawaban": "O–H (alkohol)"
-        },
-        {
-            "soal": "Bilangan 2210–2260 cm⁻¹ dengan intensitas kuat kemungkinan besar adalah?",
-            "opsi": ["C≡C", "C=O", "C≡N", "C=C"],
-            "jawaban": "C≡N"
-        },
-        {
-            "soal": "Gugus fungsi aromatik biasa menunjukkan serapan pada rentang?",
-            "opsi": ["1450–1600 cm⁻¹", "1000–1300 cm⁻¹", "2850–2960 cm⁻¹", "3300–3500 cm⁻¹"],
-            "jawaban": "1450–1600 cm⁻¹"
-        },
-        {
-            "soal": "Zona fingerprint biasanya berada di rentang?",
-            "opsi": ["2500–3300 cm⁻¹", "1450–1750 cm⁻¹", "400–1400 cm⁻¹", "3500–4000 cm⁻¹"],
-            "jawaban": "400–1400 cm⁻¹"
-        }
-    ]
-
+    kuis_list += [
+    {
+        "soal": "Bilangan gelombang sekitar 3300 cm⁻¹ dengan dua puncak biasanya menunjukkan keberadaan?",
+        "opsi": ["Amina sekunder", "Amina primer", "Alkohol", "Karbonil"],
+        "jawaban": "Amina primer",
+        "penjelasan": "Amina primer (R-NH₂) menghasilkan dua pita tajam pada 3300–3500 cm⁻¹ karena dua regangan N–H simetris dan asimetris."
+    },
+    {
+        "soal": "Serapan tajam dan kuat di sekitar 1740 cm⁻¹ dapat menunjukkan gugus?",
+        "opsi": ["Amina", "Ester", "Alkena", "Alkana"],
+        "jawaban": "Ester",
+        "penjelasan": "Ester menunjukkan pita kuat C=O di sekitar 1735–1750 cm⁻¹, sedikit lebih tinggi dari keton biasa karena efek tarik gugus O–R."
+    },
+    {
+        "soal": "Jika spektrum menunjukkan pita lemah di 2100–2260 cm⁻¹, kemungkinan senyawa tersebut mengandung?",
+        "opsi": ["C–N", "C≡C", "C=O", "O–H"],
+        "jawaban": "C≡C",
+        "penjelasan": "C≡C (alkuna) sering memberikan pita lemah dalam IR karena perubahan dipolnya kecil."
+    },
+    {
+        "soal": "Apa yang menyebabkan pita O–H dari asam karboksilat sangat lebar?",
+        "opsi": ["Ikatan hidrogen intramolekul", "Ikatan hidrogen kuat", "Tidak polar", "Ikatan rangkap tiga"],
+        "jawaban": "Ikatan hidrogen kuat",
+        "penjelasan": "O–H dari asam karboksilat sangat lebar karena ikatan hidrogen kuat dan ekstensif antar molekul."
+    },
+    {
+        "soal": "Ciri khas C–O ester biasanya muncul di daerah?",
+        "opsi": ["900–1100 cm⁻¹", "1000–1300 cm⁻¹", "1600–1750 cm⁻¹", "2850–2960 cm⁻¹"],
+        "jawaban": "1000–1300 cm⁻¹",
+        "penjelasan": "Regangan C–O dari ester biasanya menghasilkan pita kuat di kisaran 1050–1300 cm⁻¹."
+    },
+    {
+        "soal": "Gugus NO₂ menunjukkan berapa pita khas dalam spektrum IR?",
+        "opsi": ["1", "2", "3", "4"],
+        "jawaban": "2",
+        "penjelasan": "NO₂ memberikan dua pita kuat khas: regangan simetris (sekitar 1350 cm⁻¹) dan asimetris (sekitar 1530 cm⁻¹)."
+    },
+    {
+        "soal": "Pita pada 2850 dan 2920 cm⁻¹ paling mungkin berasal dari?",
+        "opsi": ["Alkana", "Aromatik", "Karbonil", "Nitril"],
+        "jawaban": "Alkana",
+        "penjelasan": "C–H sp³ (alkana) menunjukkan dua pita regangan CH pada sekitar 2850 dan 2920 cm⁻¹."
+    },
+    {
+        "soal": "Serapan C=C pada alkena biasanya muncul di?",
+        "opsi": ["1000–1300 cm⁻¹", "1500–1600 cm⁻¹", "1600–1680 cm⁻¹", ">3000 cm⁻¹"],
+        "jawaban": "1600–1680 cm⁻¹",
+        "penjelasan": "Regangan C=C pada alkena menghasilkan pita medium pada 1620–1680 cm⁻¹."
+    },
+    {
+        "soal": "Jika spektrum IR menunjukkan serapan kuat pada 1700 cm⁻¹ dan pita lebar pada 2500–3300 cm⁻¹, senyawa tersebut kemungkinan adalah?",
+        "opsi": ["Ester", "Amina", "Asam karboksilat", "Aldehida"],
+        "jawaban": "Asam karboksilat",
+        "penjelasan": "Asam karboksilat menunjukkan kombinasi dua pita khas: C=O kuat di 1700 cm⁻¹ dan O–H sangat lebar di 2500–3300 cm⁻¹."
+    },
+    {
+        "soal": "Serapan tajam di sekitar 3300 cm⁻¹, tidak terlalu lebar, kemungkinan adalah?",
+        "opsi": ["C–H sp³", "N–H", "O–H", "C≡N"],
+        "jawaban": "N–H",
+        "penjelasan": "N–H dari amina menimbulkan pita tajam sekitar 3300 cm⁻¹, biasanya lebih sempit daripada O–H."
+    },
+    {
+        "soal": "Apa perbedaan utama serapan C=O dari aldehida dan keton?",
+        "opsi": ["Aldehida lebih rendah", "Keton lebih kuat", "Aldehida punya dua pita tambahan", "Keton lebih lebar"],
+        "jawaban": "Aldehida punya dua pita tambahan",
+        "penjelasan": "Aldehida menunjukkan dua pita regangan C–H di sekitar 2700–2900 cm⁻¹, selain pita C=O di 1720 cm⁻¹."
+    },
+    {
+        "soal": "Jika tidak ditemukan pita C=O, kemungkinan besar senyawa tersebut bukan?",
+        "opsi": ["Alkohol", "Ester", "Amina", "Alkana"],
+        "jawaban": "Ester",
+        "penjelasan": "Ester selalu memiliki pita C=O kuat. Jika tidak ada, senyawa tersebut kemungkinan bukan ester."
+    },
+    {
+        "soal": "Spektrum dengan pita di 1450–1600 cm⁻¹ dan 3000–3100 cm⁻¹ kemungkinan menunjukkan keberadaan?",
+        "opsi": ["Alkana", "Aromatik", "Ester", "Alkena"],
+        "jawaban": "Aromatik",
+        "penjelasan": "Aromatik menunjukkan regangan C=C pada 1450–1600 cm⁻¹ dan regangan C–H aromatik di 3000–3100 cm⁻¹."
+    },
+    {
+        "soal": "Pita IR dari C≡N cenderung lebih kuat daripada C≡C karena?",
+        "opsi": ["C≡N lebih panjang", "Dipol C≡N lebih besar", "C≡N tidak menyerap", "C≡C simetris"],
+        "jawaban": "Dipol C≡N lebih besar",
+        "penjelasan": "C≡N menyerap lebih kuat karena memiliki momen dipol yang lebih besar daripada C≡C yang simetris."
+    },
+    {
+        "soal": "Bilangan gelombang lebih tinggi dari 3000 cm⁻¹ biasanya menandakan regangan?",
+        "opsi": ["C–C", "C–O", "X–H", "C=O"],
+        "jawaban": "X–H",
+        "penjelasan": "Bilangan >3000 cm⁻¹ biasanya berasal dari regangan ikatan X–H seperti O–H, N–H, atau C–H sp²/sp³."
+    }
+]
     for i, soal in enumerate(kuis_list):
         st.write(f"{i+1}. {soal['soal']}")
         jawaban = st.radio("Pilih jawaban:", soal["opsi"], key=i)
