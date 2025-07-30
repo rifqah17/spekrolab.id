@@ -121,27 +121,62 @@ elif halaman == "📚 Teori & Tabel Spektrum":
 
 elif halaman == "🧪 Kuis Interaktif":
     st.markdown("## 🧪 Kuis Spektroskopi IR")
-    st.markdown("Jawab pertanyaan berikut untuk menguji pemahaman kamu:")
-
+    st.markdown("Jawab pertanyaan berikut untuk menguji pemahaman kamu. Setiap jawaban benar bernilai 5 poin.")
+    
+    # List soal dengan penjelasan
     kuis_list = [
         {
             "soal": "Rentang 1680–1750 cm⁻¹ merupakan ciri khas gugus?",
             "opsi": ["C=C", "C≡N", "C=O", "O–H"],
-            "jawaban": "C=O"
+            "jawaban": "C=O",
+            "penjelasan": "Rentang 1680–1750 cm⁻¹ merupakan rentang khas gugus karbonil (C=O), terutama pada aldehida, keton, ester, dan asam karboksilat. Intensitasnya sangat kuat dan tajam, menjadikannya salah satu sinyal paling penting dalam IR."
         },
         {
             "soal": "Spektrum IR di 3200–3550 cm⁻¹ yang lebar dan intens biasanya menunjukkan?",
             "opsi": ["C–H", "N–H", "O–H (alkohol)", "C≡C"],
-            "jawaban": "O–H (alkohol)"
+            "jawaban": "O–H (alkohol)",
+            "penjelasan": "Pita IR yang sangat lebar dan intens di kisaran 3200–3550 cm⁻¹ merupakan ciri khas gugus hidroksil (O–H) pada alkohol. Pita ini lebar karena pembentukan ikatan hidrogen antar molekul."
         },
         {
             "soal": "Bilangan 2210–2260 cm⁻¹ dengan intensitas kuat kemungkinan besar adalah?",
             "opsi": ["C≡C", "C=O", "C≡N", "C=C"],
-            "jawaban": "C≡N"
+            "jawaban": "C≡N",
+            "penjelasan": "C≡N (nitril) memiliki serapan IR di antara 2210–2260 cm⁻¹ dan ditandai dengan pita yang tajam dan intens. Berbeda dengan C≡C (alkuna) yang cenderung lebih lemah."
         },
         {
             "soal": "Gugus fungsi aromatik biasa menunjukkan serapan pada rentang?",
             "opsi": ["1450–1600 cm⁻¹", "1000–1300 cm⁻¹", "2850–2960 cm⁻¹", "3300–3500 cm⁻¹"],
+            "jawaban": "1450–1600 cm⁻¹",
+            "penjelasan": "Cincin aromatik menunjukkan dua hingga tiga pita serapan pada 1450–1600 cm⁻¹ karena regangan C=C konjugasi dalam cincin. Ini merupakan ciri khas struktur aromatik seperti benzena."
+        },
+        {
+            "soal": "Zona fingerprint biasanya berada di rentang?",
+            "opsi": ["2500–3300 cm⁻¹", "1450–1750 cm⁻¹", "400–1400 cm⁻¹", "3500–4000 cm⁻¹"],
+            "jawaban": "400–1400 cm⁻¹",
+            "penjelasan": "Zona fingerprint berada di bawah 1400 cm⁻¹ dan sangat kompleks, terdiri dari banyak pita unik untuk setiap senyawa. Walau sulit dianalisis, zona ini berguna untuk identifikasi senyawa yang spesifik."
+        }
+    ]
+
+    skor = 0  # variabel penampung nilai total
+    for i, soal in enumerate(kuis_list):
+        st.write(f"### {i+1}. {soal['soal']}")
+        jawaban = st.radio("Pilih jawaban kamu:", soal["opsi"], key=f"kuis_{i}")
+        
+        if st.button(f"Cek Jawaban {i+1}", key=f"cek_{i}"):
+            if jawaban == soal["jawaban"]:
+                st.success("✅ Jawaban kamu BENAR!")
+                st.info(soal["penjelasan"])
+                skor += 5
+            else:
+                st.error(f"❌ Jawaban kamu SALAH. Jawaban yang benar: {soal['jawaban']}")
+                st.info(soal["penjelasan"])
+        st.markdown("---")
+    
+    if st.button("🎯 Lihat Skor Akhir"):
+        st.success(f"Skor kamu: {skor} dari {len(kuis_list) * 5} poin.")
+        if skor == 25:
+            st.balloons()
+            st.success("Selamat! Kamu menjawab semua dengan benar.")
             "jawaban": "1450–1600 cm⁻¹"
         },
         {
