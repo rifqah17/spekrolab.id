@@ -160,7 +160,3 @@ elif halaman == "🧪 Kuis Interaktif":
             else:
                 st.error(f"❌ Salah. Jawaban benar: {soal['jawaban']}")
         st.markdown("---")
-                st.success("✅ Benar!")
-            else:
-                st.error(f"❌ Salah. Jawaban benar: {soal['jawaban']}")
-        st.markdown("---")
